@@ -23,7 +23,6 @@ exports.login = async (ws, message) => {
             return;
         }
 
-        // Если все проверки прошли успешно, отправляем сообщение об успешной авторизации
-        ws.send(JSON.stringify({ type: 'loginResponse', success: true }));
+        ws.send(JSON.stringify({ type: 'loginResponse', success: true, username: user.username }));
     }
 };
