@@ -32,6 +32,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    season_earnings: {
+        type: Number,
+        default: 0
+    },
     referral_code: {
         type: String,
         unique: true

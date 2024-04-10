@@ -6,6 +6,8 @@ const tapModule = require('./modules/tap');
 const loginModule = require('./modules/login');
 const getRefModule = require('./modules/getRef');
 const { updateReferralBalancesForAllUsers } = require('./modules/referrals');
+const getReferralListModule = require('./modules/getReferralList');
+const getLeaderboardModule = require('./modules/getLeaderboard');
 
 const app = express();
 const port = 3000;
@@ -17,7 +19,7 @@ function checkTimeAndUpdateReferrals() {
     const now = new Date();
     console.log(`Current time: ${now}`);
     // Проверяем, является ли текущее время кратным часу
-    if (true) {
+    if (now.getMinutes() === 0) {
         // Вызываем функцию обновления реферальных начислений для всех пользователей
         updateReferralBalancesForAllUsers(wss);
     }
@@ -38,8 +40,13 @@ wss.on('connection', ws => {
             tapModule.tap(ws, message);
         } else if (data.type === 'login') {
             loginModule.login(ws, message);
-        } else if (data.type === 'requestReferralCode') { // Обрабатываем запрос реферального кода
+        } else if (data.type === 'requestReferralCode') {
             getRefModule.requestReferralCode(ws, message);
+        } else if (data.type === 'getReferralList') {
+            getReferralListModule.getReferralList(ws, message);
+        }
+        else if (data.type === 'getLeaderboard') {
+            getLeaderboardModule.getLeaderboard(ws, message);
         }
     });
 

@@ -1,6 +1,5 @@
 const { User } = require('../modules/database');
 const WebSocket = require('ws');
-
 exports.updateReferralBalancesForUser = async (userId, wss) => {
     // Находим пользователя по ID
     const user = await User.findById(userId);
@@ -20,22 +19,16 @@ exports.updateReferralBalancesForUser = async (userId, wss) => {
     // Обновляем баланс пользователя
     await User.findByIdAndUpdate(userId, { $inc: { balance: totalBonus } });
 
-    // Обнуляем hourly_balance и hourly_clicks у всех рефералов пользователя
+    // Обнуляем hourly_balance и hourly_clicks у всех рефералов пользователя,
+    // а также инкрементируем season_earnings на hourly_balance * 0.1
     await User.updateMany(
         { referrer_id: user._id },
         { $set: { hourly_balance: 0, hourly_clicks: 0 } }
     );
 
     // Отправляем обновленный баланс через WebSocket
-    console.log('All open connections:');
-    wss.clients.forEach(client => {
-        console.log(`client.userId: ${client.userId}`);
-        console.log(`client.readyState: ${client.readyState}`);
-        console.log(`user.id: ${user.id}`);
-    });
     wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN && client.userId == user.id) {
-            //console.log(`client.userId: ${client.userId} -------- user.id: ${user.id}`);
             client.send(JSON.stringify({
                 type: 'referralBonus',
                 balance: user.balance + totalBonus,
@@ -43,6 +36,4 @@ exports.updateReferralBalancesForUser = async (userId, wss) => {
             }));
         }
     });
-
-    //console.log(`Referral balances updated for user with ID ${userId}.`);
 };
