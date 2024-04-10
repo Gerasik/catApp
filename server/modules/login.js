@@ -23,6 +23,9 @@ exports.login = async (ws, message) => {
             return;
         }
 
-        ws.send(JSON.stringify({ type: 'loginResponse', success: true, username: user.username }));
+        // Сохраняем id пользователя в объекте WebSocket клиента
+        ws.userId = user._id;
+
+        ws.send(JSON.stringify({ type: 'loginResponse', success: true, username: user.username, balance: user.balance }));
     }
 };

@@ -20,6 +20,18 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    offlineIncome: {
+        type: Number,
+        default: 0
+    },
+    hourly_balance: {
+        type: Number,
+        default: 0
+    },
+    hourly_clicks: {
+        type: Number,
+        default: 0
+    },
     referral_code: {
         type: String,
         unique: true
@@ -31,9 +43,20 @@ const userSchema = new mongoose.Schema({
     referred_by: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    },
+    referrals: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    clicks: {
+        type: Number,
+        default: 0
+    },
+    last_hour_update: {
+        type: Date,
+        default: Date.now
     }
 });
-
 // Создание модели пользователя
 const User = mongoose.model('User', userSchema);
 
