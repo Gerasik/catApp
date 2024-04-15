@@ -1,0 +1,13 @@
+.balance-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.balance-container img {
+    width: 100px;
+}
+
+.balance-container span {
+    font-size: 1.2rem;
+}
