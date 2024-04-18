@@ -21,16 +21,21 @@
     text-align: center;
     border-radius: 10px;
     color: white;
+    box-sizing: border-box;
 }
 
 .balance-container {
     height: 20%;
+    overflow: hidden;
 }
 
 .cat-click {
     height: 60%;
+
 }
 
 .interface-container {
+
     height: 20%;
+
 }

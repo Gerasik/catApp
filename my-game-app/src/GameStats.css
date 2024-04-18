@@ -1,0 +1,33 @@
+/* GameStats.css */
+
+.game-stats {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.stats-item {
+    margin-bottom: 10px;
+}
+
+.total-touches {
+    font-size: 18px;
+    color: gray;
+}
+
+.count-of-total-touches {
+    font-size: 24px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.stats-divider {
+    width: 90%;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}

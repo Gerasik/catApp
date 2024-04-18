@@ -1,0 +1,40 @@
+.league-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.league-wrapper {
+    text-align: center;
+    color: white;
+}
+
+.league-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.button-prev,
+.button-next {
+    width: 50px;
+    height: 50px;
+    /* Цвет фона кнопок */
+    color: white;
+    /* Цвет текста кнопок */
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.button-prev:hover,
+.button-next:hover {
+    background-color: #808080;
+    /* Цвет фона кнопок при наведении */
+}

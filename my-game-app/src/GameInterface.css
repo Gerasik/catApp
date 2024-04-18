@@ -1,0 +1,39 @@
+.interface-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    bottom: 0;
+}
+
+.ref-container,
+.task-container,
+.tap-container,
+.boosts-container,
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid rgba(128, 128, 128, 0.5);
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.ref,
+.task-1,
+.tap-1,
+.boosts,
+.stats-1 {
+    width: 100%;
+    height: auto;
+}
+
+.ref-container:hover,
+.task-container:hover,
+.tap-container:hover,
+.boosts-container:hover,
+.stats-container:hover {
+    background-color: rgba(255, 255, 0, 0.2);
+}
