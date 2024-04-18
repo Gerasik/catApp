@@ -20,7 +20,6 @@ exports.updateReferralBalancesForUser = async (userId, wss) => {
     await User.findByIdAndUpdate(userId, { $inc: { balance: totalBonus } });
 
     // Обнуляем hourly_balance и hourly_clicks у всех рефералов пользователя,
-    // а также инкрементируем season_earnings на hourly_balance * 0.1
     await User.updateMany(
         { referrer_id: user._id },
         { $set: { hourly_balance: 0, hourly_clicks: 0 } }
