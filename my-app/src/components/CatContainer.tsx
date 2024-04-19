@@ -4,11 +4,10 @@ import styles from './CatContainer.module.css';
 const CatContainer: React.FC = () => {
     const [clawsOut, setClawsOut] = useState(false);
     const [scorePositions, setScorePositions] = useState<{ x: number; y: number }[]>([]);
-    const containerRef = useRef<HTMLDivElement>(null); // Создаем ref
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const handleClick = (e: React.MouseEvent) => {
-        setClawsOut(true);
-        setTimeout(() => setClawsOut(false), 100);
+        setClawsOut(prev => !prev);
         if (containerRef.current) {
             const rect = containerRef.current.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -19,8 +18,7 @@ const CatContainer: React.FC = () => {
 
     const handleTouchStart = (e: React.TouchEvent) => {
         if (e.touches.length > 0 && containerRef.current) {
-            setClawsOut(true);
-            setTimeout(() => setClawsOut(false), 100);
+            setClawsOut(prev => !prev);
             const rect = containerRef.current.getBoundingClientRect();
             Array.from(e.touches).forEach(touch => {
                 const x = touch.clientX - rect.left;

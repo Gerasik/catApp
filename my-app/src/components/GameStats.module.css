@@ -5,6 +5,7 @@
     gap: 10px;
     padding: 20px;
     box-sizing: border-box;
+    color: white;
 }
 
 .statsItem {
@@ -15,12 +16,14 @@
 }
 
 .statLabel {
-    font-size: 16px;
+    font-size: 24px;
     font-weight: bold;
+
 }
 
 .statValue {
-    font-size: 18px;
+    font-size: 26px;
+
 }
 
 .statsDivider {
