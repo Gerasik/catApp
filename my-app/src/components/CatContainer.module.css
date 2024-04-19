@@ -1,12 +1,42 @@
+/* src/components/CatContainer.module.css */
 .catContainer {
     position: absolute;
-    bottom: 50px;
-    left: 50%;
+    bottom: 1px;
+    left: calc(50% - 50px);
     transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 500px;
 }
 
-.catContainer img {
-    max-width: 200px;
-    max-height: 200px;
+.catImage {
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
+}
+
+.scoreAnimation {
+    position: absolute;
+    font-size: 24px;
+    color: #FFF;
+    animation: scoreAnimation 2s ease-out forwards;
+}
+
+@keyframes scoreAnimation {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -100px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -200px);
+    }
 }

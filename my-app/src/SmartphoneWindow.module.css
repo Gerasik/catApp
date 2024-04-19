@@ -1,5 +1,6 @@
 .smartphoneWindow {
-    background-color: #f0f0f0;
+    background-image: url('catappback1.png');
+    background-size: cover;
     width: 375px;
     height: 667px;
     margin: 0 auto;
@@ -12,6 +13,7 @@
     padding: 20px;
     box-sizing: border-box;
     position: relative;
+    overflow: hidden;
 }
 
 .contentContainer {
@@ -19,6 +21,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 }
 
 .catContainer,
@@ -32,7 +35,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.8);
     padding: 10px 0;
     box-sizing: border-box;
 }

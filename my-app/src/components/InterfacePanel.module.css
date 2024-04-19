@@ -1,15 +1,27 @@
 .interfacePanel {
     display: flex;
     justify-content: space-around;
-    width: 100%;
-    padding: 20px 0;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 10px;
+    padding: 30px;
+    color: white;
 }
 
 .interfacePanel div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    border: 2px solid rgba(128, 128, 128, 0.5);
+    border-radius: 20px;
+    background-color: rgba(128, 128, 128, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.interfacePanel div:hover {
+    background-color: rgba(255, 255, 0, 0.3);
 }
 
 .interfacePanel img {
@@ -20,4 +32,5 @@
 
 .interfacePanel span {
     font-size: 14px;
+    text-align: center;
 }
