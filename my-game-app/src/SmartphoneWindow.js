@@ -5,6 +5,8 @@ import CatContainer from './CatContainer';
 import GameInterface from './GameInterface';
 import GameStats from './GameStats';
 import League from './League';
+import Boosters from './Boosters';
+import { BoostersProvider } from './BoostersContext'; // Импортируем BoostersProvider
 
 function SmartphoneWindow({ socket, currentUsername }) {
     const [selectedElement, setSelectedElement] = useState('');
@@ -13,24 +15,26 @@ function SmartphoneWindow({ socket, currentUsername }) {
         setSelectedElement(element);
     };
     return (
-        <div className="smartphone-window">
-            <div>
-                {selectedElement === 'stats' ? (
-                    <GameStats />
-                ) : selectedElement === 'task' ? (
-                    <League balance={53004} requiredValues={leagueConstants} />
-                ) : (
-                    <div>
-                        <BalanceContainer socket={socket} />
-                        <CatContainer socket={socket} currentUsername={currentUsername} />
-                    </div>
-                )}
-                <GameInterface onElementClick={handleElementClick} />
+        <BoostersProvider>
+            <div className="smartphone-window">
+                <div>
+                    {selectedElement === 'stats' ? (
+                        <GameStats />
+                    ) : selectedElement === 'task' ? (
+                        <League balance={53004} requiredValues={leagueConstants} />
+                    ) : selectedElement === 'boosts' ? (
+                        <Boosters balance={53004} />
+                    ) : (
+                        <div>
+                            <BalanceContainer socket={socket} />
+                            <CatContainer socket={socket} currentUsername={currentUsername} />
+                        </div>
+                    )}
+                    <GameInterface onElementClick={handleElementClick} />
+                </div>
             </div>
-        </div>
+        </BoostersProvider>
     );
 }
-
-
 
 export default SmartphoneWindow;

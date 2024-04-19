@@ -1,0 +1,50 @@
+.boosters-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.daily-booster {
+    margin-bottom: 20px;
+}
+
+.booster-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.booster {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.booster img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.booster-horizontal {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.booster-vertical {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.boosters-list {
+    margin-top: 20px;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
