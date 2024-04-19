@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.dc49933f.css",
+    "main.js": "/static/js/main.55107966.js",
+    "static/media/catappback1.png": "/static/media/catappback1.644096f10f52f85f4f3d.png",
+    "static/media/Potato_sans-Black.otf": "/static/media/Potato_sans-Black.dda0b966dca52faa5df9.otf",
+    "static/media/Potato_sans-Bold.otf": "/static/media/Potato_sans-Bold.704289ae548fdd04a01c.otf",
+    "index.html": "/index.html",
+    "main.dc49933f.css.map": "/static/css/main.dc49933f.css.map",
+    "main.55107966.js.map": "/static/js/main.55107966.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dc49933f.css",
+    "static/js/main.55107966.js"
+  ]
+}
