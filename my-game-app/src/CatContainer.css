@@ -1,0 +1,54 @@
+.cat-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cat-image {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.progress-container {
+    width: 80%;
+    height: 20px;
+}
+
+.energy-bar {
+    height: 100%;
+    background-color: green;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.energy-text {
+    text-align: center;
+    color: #ffffff;
+}
+
+.score-animation {
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    animation: scoreAnimation 2s forwards;
+}
+
+@keyframes scoreAnimation {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -100px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -200px);
+    }
+}
