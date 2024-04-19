@@ -29,8 +29,10 @@ function CatContainer({ socket, currentUsername }) {
 
     const handleTouchStart = (e) => {
         if (energyState > 0) {
-            setClawsOut(true); // Сначала выпускаем когти
-            setTimeout(() => setClawsOut(false), 100); // Затем сразу же скрываем их
+            requestAnimationFrame(() => {
+                setClawsOut(true);
+                setTimeout(() => setClawsOut(false), 100);
+            });
 
             if (e.touches) {
                 Array.from(e.touches).forEach(touch => {
@@ -55,8 +57,11 @@ function CatContainer({ socket, currentUsername }) {
             handleTouchStart(e);
         } else {
             if (energyState > 0) {
-                setClawsOut(true); // Сначала выпускаем когти
-                setTimeout(() => setClawsOut(false), 100); // Затем сразу же скрываем их
+
+                requestAnimationFrame(() => {
+                    setClawsOut(true);
+                    setTimeout(() => setClawsOut(false), 100);
+                });
 
                 setScorePositions(prev => [...prev, { x: e.clientX, y: e.clientY }]);
 
@@ -69,6 +74,7 @@ function CatContainer({ socket, currentUsername }) {
             }
         }
     };
+
 
     const getProgressBarColor = () => {
         if (energyState >= 0.8 * maxEnergy) {
