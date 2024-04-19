@@ -12,8 +12,7 @@ function CatContainer({ socket, currentUsername }) {
 
     const [energyState, setEnergyState] = useState(energy);
     const [clawsOut, setClawsOut] = useState(false);
-    const [scorePosition, setScorePosition] = useState({ x: 0, y: 0 });
-    const [showScore, setShowScore] = useState(false);
+    const [scorePositions, setScorePositions] = useState([]);
 
     useEffect(() => {
         setEnergyState(energy);
@@ -28,11 +27,16 @@ function CatContainer({ socket, currentUsername }) {
         return () => clearInterval(interval);
     }, [energyState, maxEnergy, rechargingSpeed]);
 
-    const handleClick = (e) => {
+    const handleTouchStart = (e) => {
         if (energyState > 0) {
-            setClawsOut(!clawsOut);
-            setScorePosition({ x: e.clientX, y: e.clientY });
-            setShowScore(true);
+            setClawsOut(true); // Сначала выпускаем когти
+            setTimeout(() => setClawsOut(false), 100); // Затем сразу же скрываем их
+
+            if (e.touches) {
+                Array.from(e.touches).forEach(touch => {
+                    setScorePositions(prev => [...prev, { x: touch.clientX, y: touch.clientY }]);
+                });
+            }
 
             setEnergyState(Math.max(0, energyState - tapValue));
             if (socket && socket.readyState === WebSocket.OPEN) {
@@ -41,9 +45,29 @@ function CatContainer({ socket, currentUsername }) {
                 console.error('WebSocket is not open. State:', socket.readyState);
             }
         }
-        setTimeout(() => {
-            setShowScore(false);
-        }, 1000);
+    };
+
+    const handleClick = (e) => {
+        if (e.type === 'click' && e.targetTouches) {
+            e.preventDefault();
+        }
+        if (e.touches) {
+            handleTouchStart(e);
+        } else {
+            if (energyState > 0) {
+                setClawsOut(true); // Сначала выпускаем когти
+                setTimeout(() => setClawsOut(false), 100); // Затем сразу же скрываем их
+
+                setScorePositions(prev => [...prev, { x: e.clientX, y: e.clientY }]);
+
+                setEnergyState(Math.max(0, energyState - tapValue));
+                if (socket && socket.readyState === WebSocket.OPEN) {
+                    socket.send(JSON.stringify({ type: 'tap', username: currentUsername }));
+                } else {
+                    console.error('WebSocket is not open. State:', socket.readyState);
+                }
+            }
+        }
     };
 
     const getProgressBarColor = () => {
@@ -57,23 +81,29 @@ function CatContainer({ socket, currentUsername }) {
     };
 
     return (
-        <div className="cat-container" onClick={handleClick}>
-            <img src={clawsOut ? "/images/cat2.svg" : "/images/cat1.svg"} alt="Cat" className="cat-image" width="400"
+        <div className="cat-container" onClick={handleClick} onTouchStart={handleTouchStart}>
+            <img
+                src={clawsOut ? "/images/cat2.svg" : "/images/cat1.svg"}
+                alt="Cat"
+                className={`cat-image ${clawsOut ? 'claws-out' : ''}`}
+                width="400"
                 height="400"
-                preserveAspectRatio="xMidYMid meet" />
+                preserveAspectRatio="xMidYMid meet"
+            />
             <div className="progress-container">
                 <div className="energy-text">{energyState}/{maxEnergy}</div>
                 <div className="energy-bar" style={{ width: `${(energyState / maxEnergy) * 100}%`, backgroundColor: getProgressBarColor() }}></div>
             </div>
-            {showScore && (
+            {scorePositions.map((position, index) => (
                 <div
+                    key={index}
                     className="score-animation"
-                    style={{ left: scorePosition.x, top: scorePosition.y }}
-                    onAnimationEnd={() => setShowScore(false)}
+                    style={{ left: position.x, top: position.y }}
+                    onAnimationEnd={() => setScorePositions(prev => prev.filter((_, i) => i !== index))}
                 >
                     +{tapValue}
                 </div>
-            )}
+            ))}
         </div>
     );
 }

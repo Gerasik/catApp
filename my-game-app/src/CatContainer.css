@@ -10,7 +10,10 @@
 .cat-image {
     max-width: 90%;
     max-height: 90%;
-    animation: catAnimation 5s forwards;
+}
+
+.cat-image.claws-out {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 }
 
 .progress-container {
@@ -51,19 +54,5 @@
     100% {
         opacity: 0;
         transform: translate(-50%, -200px);
-    }
-}
-
-@keyframes clawAnimation {
-
-    0%,
-    100% {
-
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-
-    50% {
-
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     }
 }
