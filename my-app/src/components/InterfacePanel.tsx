@@ -3,11 +3,11 @@ import styles from './InterfacePanel.module.css';
 
 const InterfacePanel: React.FC = () => {
     const items = [
-        { img: '/images/boosts.png', label: 'Boosts' },
         { img: '/images/ref.png', label: 'Ref/' },
-        { img: '/images/Stats.png', label: 'Stats' },
-        { img: '/images/tap.png', label: 'Tap' },
         { img: '/images/tasks.png', label: 'Tasks' },
+        { img: '/images/tap.png', label: 'Tap' },
+        { img: '/images/boosts.png', label: 'Boosts' },
+        { img: '/images/Stats.png', label: 'Stats' },
     ];
 
     return (
