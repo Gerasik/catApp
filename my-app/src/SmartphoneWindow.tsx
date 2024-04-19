@@ -1,6 +1,5 @@
-// src/SmartphoneWindow.tsx
 import React from 'react';
-import './SmartphoneWindow.css';
+import styles from './SmartphoneWindow.module.css';
 import BalanceDisplay from './components/BalanceDisplay';
 import CatContainer from './components/CatContainer';
 import InterfacePanel from './components/InterfacePanel';
@@ -13,11 +12,15 @@ const SmartphoneWindow: React.FC<SmartphoneWindowProps> = ({ currentUsername }) 
     const balance = 1000000;
 
     return (
-        <div className="smartphone-window">
+        <div className={styles.smartphoneWindow}>
             <h2>Welcome, {currentUsername}!</h2>
             <BalanceDisplay balance={balance} />
-            <CatContainer />
-            <InterfacePanel />
+            <div className={styles.catContainer}>
+                <CatContainer />
+            </div>
+            <div className={styles.interfacePanel}>
+                <InterfacePanel />
+            </div>
         </div>
     );
 };

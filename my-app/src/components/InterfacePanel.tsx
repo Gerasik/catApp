@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './InterfacePanel.module.css';
 
 const InterfacePanel: React.FC = () => {
     const items = [
@@ -10,7 +11,7 @@ const InterfacePanel: React.FC = () => {
     ];
 
     return (
-        <div>
+        <div className={styles.interfacePanel}>
             {items.map((item, index) => (
                 <div key={index}>
                     <img src={item.img} alt={item.label} />
