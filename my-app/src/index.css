@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Potato Sans';
+  src: url('Potato_sans-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Potato Sans';
+  src: url('Potato_sans-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'Potato Sans', sans-serif;
+}
