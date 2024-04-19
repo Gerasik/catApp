@@ -8,6 +8,7 @@ function CatContainer({ socket, currentUsername }) {
 
     const [energy, setEnergy] = useState(500 + (boostersData.find(booster => booster.name === 'Energy Limit')?.level || 0) * 10);
     const [maxEnergy, setMaxEnergy] = useState(500 + (boostersData.find(booster => booster.name === 'Energy Limit')?.level || 0) * 10);
+    // eslint-disable-next-line no-unused-vars
     const [tapValue, setTapValue] = useState((boostersData.find(booster => booster.name === 'Multitap')?.level || 1));
     const [rechargingSpeed, setRechargingSpeed] = useState((boostersData.find(booster => booster.name === 'Recharging Speed')?.level || 1));
 

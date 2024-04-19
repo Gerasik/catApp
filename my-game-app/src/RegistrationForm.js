@@ -36,6 +36,7 @@ function RegistrationForm({ socket }) {
                     alert('Registration failed. Please try again.');
                 }
             } else if (data.type === 'loginResponse') {
+                // eslint-disable-next-line react-hooks/exhaustive-deps
                 handleLogin(data);
             }
         };
