@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useUser } from './UserContext';
 
 function RegistrationForm({ socket }) {
@@ -16,14 +16,14 @@ function RegistrationForm({ socket }) {
         socket.send(JSON.stringify({ type: 'register', username, referralCode, password }));
     };
 
-    const handleLogin = (data) => {
+    const handleLogin = useCallback((data) => {
         if (data.success) {
             alert('Login successful!');
             setCurrentUsername(username);
         } else {
             alert('Login failed. ' + (data.message || 'Please try again.'));
         }
-    };
+    }, [username, setCurrentUsername]);
 
     useEffect(() => {
         const handleSocketMessage = (event) => {
@@ -36,22 +36,18 @@ function RegistrationForm({ socket }) {
                     alert('Registration failed. Please try again.');
                 }
             } else if (data.type === 'loginResponse') {
-                // eslint-disable-next-line react-hooks/exhaustive-deps
                 handleLogin(data);
             }
         };
 
         socket.addEventListener('message', handleSocketMessage);
 
-
         return () => {
             socket.removeEventListener('message', handleSocketMessage);
-
         };
-    }, [socket, handleLogin, username]);
+    }, [socket, handleLogin]);
 
     return (
-
         <div>
             <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
             <input type="text" placeholder="Referral Code" value={referralCode} onChange={(e) => setReferralCode(e.target.value)} />
