@@ -17,12 +17,12 @@ function BalanceContainer({ socket }) {
         return () => {
             socket.removeEventListener('message', handleSocketMessage);
         };
-    }, [socket]); // Зависимость от socket
+    }, [socket]);
 
     return (
         <div className="balance-container">
             <img src="/images/balance.png" alt="Balance" />
-            <span>{balance}</span> {/* Отображаем текущий баланс */}
+            <span>{balance}</span>
         </div>
     );
 }

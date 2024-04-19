@@ -10,7 +10,6 @@ function App() {
   const { currentUsername } = useUser();
   return (
     <div className="App">
-      <h1>Привет, это моя игра!</h1>
       <RegistrationForm socket={socket} />
       <SmartphoneWindow socket={socket} currentUsername={currentUsername} />
     </div>
