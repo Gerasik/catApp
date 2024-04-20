@@ -1,16 +1,19 @@
 import React from 'react';
-import './App.css';
+import BalanceProvider from './components/BalanceProvider';
+import BoostersProvider from './components/BoostersProvider';
+import EnergyProvider from './components/EnergyProvider';
 import SmartphoneWindow from './SmartphoneWindow';
 
-function App() {
-
-  const currentUsername = 'testUser';
-
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <SmartphoneWindow currentUsername={currentUsername} />
-    </div>
+    <BalanceProvider>
+      <BoostersProvider>
+        <EnergyProvider>
+          <SmartphoneWindow currentUsername="User" />
+        </EnergyProvider>
+      </BoostersProvider>
+    </BalanceProvider>
   );
-}
+};
 
 export default App;

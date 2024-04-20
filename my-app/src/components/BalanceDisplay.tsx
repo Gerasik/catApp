@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './BalanceDisplay.module.css';
+import BalanceContext from './BalanceContext';
 
-interface BalanceDisplayProps {
-    balance: number;
-}
+const BalanceDisplay: React.FC = () => {
+    const { balance } = useContext(BalanceContext);
 
-const BalanceDisplay: React.FC<BalanceDisplayProps> = ({ balance }) => {
     return (
         <div className={styles.balanceDisplay}>
             <img src="/images/balance.png" alt="Balance" />

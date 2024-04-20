@@ -10,7 +10,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 20px;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
@@ -23,15 +22,20 @@
     right: 0;
     bottom: 0;
     overflow: hidden;
-    /* Скрываем содержимое, выходящее за пределы */
 }
 
-.buttonsContainer {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 100px;
-    /* Отступ сверху от "окна" */
+.energyBarContainer {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 .catContainer,
@@ -47,4 +51,22 @@
     align-items: center;
     padding: 10px 0;
     box-sizing: border-box;
+}
+
+.fadeEnter {
+    opacity: 0;
+}
+
+.fadeEnterActive {
+    opacity: 1;
+    transition: opacity 300ms;
+}
+
+.fadeExit {
+    opacity: 1;
+}
+
+.fadeExitActive {
+    opacity: 0;
+    transition: opacity 300ms;
 }
