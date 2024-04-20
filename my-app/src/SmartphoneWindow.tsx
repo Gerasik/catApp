@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styles from './SmartphoneWindow.module.css';
 import BalanceDisplay from './components/BalanceDisplay';
 import CatContainer from './components/CatContainer';
@@ -37,56 +36,20 @@ const SmartphoneWindow: React.FC<SmartphoneWindowProps> = ({ currentUsername }) 
 
     return (
         <div className={styles.smartphoneWindow}>
-            <TransitionGroup>
-                {!showGameStats && !showBoosters && (
-                    <CSSTransition key="balance" timeout={300} classNames={{
-                        enter: styles.fadeEnter,
-                        enterActive: styles.fadeEnterActive,
-                        exit: styles.fadeExit,
-                        exitActive: styles.fadeExitActive,
-                    }}>
-                        <BalanceDisplay />
-                    </CSSTransition>
-                )}
-                {showTap && (
-                    <CSSTransition key="tap" timeout={300} classNames={{
-                        enter: styles.fadeEnter,
-                        enterActive: styles.fadeEnterActive,
-                        exit: styles.fadeExit,
-                        exitActive: styles.fadeExitActive,
-                    }}>
-                        <div>
-                            <div className={styles.catContainer}>
-                                <CatContainer />
-                            </div>
-                            <EnergyBar />
-                        </div>
-                    </CSSTransition>
-                )}
-                {showGameStats && (
-                    <CSSTransition key="stats" timeout={300} classNames={{
-                        enter: styles.fadeEnter,
-                        enterActive: styles.fadeEnterActive,
-                        exit: styles.fadeExit,
-                        exitActive: styles.fadeExitActive,
-                    }}>
-                        <GameStats />
-                    </CSSTransition>
-                )}
-                {showBoosters && (
-                    <CSSTransition key="boosters" timeout={300} classNames={{
-                        enter: styles.fadeEnter,
-                        enterActive: styles.fadeEnterActive,
-                        exit: styles.fadeExit,
-                        exitActive: styles.fadeExitActive,
-                    }}>
-                        <Boosters />
-                    </CSSTransition>
-                )}
-            </TransitionGroup>
+            {!showGameStats && !showBoosters && <BalanceDisplay />}
+            {showTap && (
+                <>
+                    <div className={styles.catContainer}>
+                        <CatContainer />
+                    </div>
+                    <EnergyBar />
+                </>
+            )}
             <div className={styles.interfacePanel}>
                 <InterfacePanel onStatsClick={handleStatsClick} onBoostersClick={handleBoostersClick} onTapClick={handleTapClick} />
             </div>
+            {showGameStats && <GameStats />}
+            {showBoosters && <Boosters />}
         </div>
     );
 };
