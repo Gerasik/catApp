@@ -1,0 +1,67 @@
+.boostersContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    color: white;
+}
+
+.boosterSeparator {
+    width: 100%;
+    height: 2px;
+    background-color: gray;
+    margin: 5px 0;
+}
+
+.boostersRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5px;
+    width: 100%;
+}
+
+.boostersColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    width: 100%;
+}
+
+.booster {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 1;
+    border-radius: 10px;
+    background-color: rgba(128, 128, 128, 0.5);
+    height: 80px;
+    gap: 5px;
+}
+
+.booster img {
+    height: 100%;
+    object-fit: contain;
+}
+
+.boosterInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+.title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.text {
+    font-size: 12px;
+}
