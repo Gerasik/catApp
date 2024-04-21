@@ -55,8 +55,10 @@ const arrBoosters = [
 const Boosters: React.FC = () => {
   return (
     <div className="text-white w-full flex flex-col overflow-hidden flex-1">
-      <div className="text-xl text-center">Your Share Balance</div>
-      <BalanceDisplay balance={2500} />
+      <div className="border-b border-white/20 pb-8">
+        <div className="text-xl text-center">Your Share Balance</div>
+        <BalanceDisplay balance={2500} />
+      </div>
       <div className="overflow-y-scroll scroll-auto">
         <div className="font-alt">
           <div className="mt-8 text-base mb-4 text-left">

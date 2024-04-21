@@ -12,7 +12,7 @@ function App() {
     NavigationInterface.TAP
   )
   return (
-    <div className="bg-hero-pattern w-screen h-screen bg-cover bg-center px-6 py-14 flex flex-col max-w-md mx-auto gap-2 overflow-hidden">
+    <div className="bg-[url('../src/assets/images/catappback1.png')] w-screen h-screen bg-cover bg-center px-6 py-14 flex flex-col max-w-md mx-auto gap-2 overflow-hidden">
       {activeInterface === NavigationInterface.BOOST && <Boosters />}
       {activeInterface === NavigationInterface.TAP && <CatContainer />}
       {activeInterface === NavigationInterface.STATS && <GameStats />}

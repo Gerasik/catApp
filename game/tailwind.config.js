@@ -23,7 +23,7 @@ export default {
         scoreAnimation: "scoreAnimation 2s ease-out forwards",
       },
       backgroundImage: {
-        "hero-pattern": "url('src/assets/images/catappback1.png')",
+        "hero-pattern": "url('catApp/catappback1.png')",
       },
     },
   },
