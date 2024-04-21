@@ -1,12 +1,13 @@
 // src/components/Boosters.tsx
 import React from "react"
-import IMGtapingGuru from "assets/images/Boosters/tapingGuru.svg"
-import IMGFullTank from "assets/images/Boosters/fullTank.svg"
-import IMGMultiTap from "assets/images/Boosters/multiTap.svg"
-import IMGEnergyLimit from "assets/images/Boosters/energyLimit.svg"
-import IMGRechargingSpeed from "assets/images/Boosters/rechargingSpeed.svg"
-import IMGTapBot from "assets/images/Boosters/tapBot.svg"
+import IMGtapingGuru from "assets/images/Boosters/tapingGuru.png"
+import IMGFullTank from "assets/images/Boosters/fullTank.png"
+import IMGMultiTap from "assets/images/Boosters/multiTap.png"
+import IMGEnergyLimit from "assets/images/Boosters/energyLimits.png"
+import IMGRechargingSpeed from "assets/images/Boosters/rhrngSpeed.png"
+import IMGTapBot from "assets/images/Boosters/tapBot.png"
 import IMGBalance from "assets/images/balanceAlt.png"
+import IconNext from "assets/images/nextArrow.svg?react"
 
 const arrDaily = [
   {
@@ -52,13 +53,13 @@ const arrBoosters = [
 
 const Boosters: React.FC = () => {
   return (
-    <div className="text-white w-full h-[65vh] flex flex-col">
-      <div className="text-xl">Your Share Balance</div>
+    <div className="text-white w-full flex flex-col overflow-hidden flex-1">
+      <div className="text-xl text-center">Your Share Balance</div>
       <div className="flex justify-center items-center pb-8 border-b border-white/20 ">
         <img src={IMGBalance} className="h-10 mr-0.5" />
         2500
       </div>
-      <div className="custom-scrollbar overflow-y-scroll">
+      <div className="overflow-y-scroll scroll-auto">
         <div className="font-alt">
           <div className="mt-8 text-base mb-4 text-left">
             Your daily boosters:
@@ -66,10 +67,14 @@ const Boosters: React.FC = () => {
           <div className="flex w-full gap-3 justify-stretch">
             {arrDaily.map((i) => (
               <div
-                className="text-xs flex rounded-[10px] border-white/50 border px-3.5 py-2 flex-1 items-center bg-white/10"
+                className="text-xs flex gap-2 rounded-[10px] border-white/50 border px-3.5 py-2 flex-1 items-center bg-white/10"
                 key={i.title}
               >
-                <img src={IMGtapingGuru} alt={i.title} />
+                <img
+                  src={i.img}
+                  alt={i.title}
+                  className="w-[45px] aspect-square object-contain"
+                />
                 <div className=" text-start">
                   <p className="">{i.title}</p>
                   <div className="">
@@ -85,11 +90,15 @@ const Boosters: React.FC = () => {
           <div className="flex gap-2 flex-col">
             {arrBoosters.map((i) => (
               <div
-                className="text-xs flex rounded-[10px] border-white/50 border px-3.5 py-2 flex-1 items-center bg-white/10"
+                className="text-xs flex rounded-[10px] border-white/50 border px-3.5 py-2 flex-1 items-center bg-white/10 gap-2"
                 key={i.title}
               >
-                <img src={IMGMultiTap} alt={i.title} />
-                <div className="flex flex-col items-start">
+                <img
+                  src={i.img}
+                  alt={i.title}
+                  className="w-[45px] aspect-square object-contain object-center"
+                />
+                <div className="flex flex-col items-start flex-1">
                   <p className="">{i.title}</p>
                   <div className="flex">
                     <img src={IMGBalance} className="h-3.5 mr-0.5" /> {i.cost}
@@ -98,6 +107,7 @@ const Boosters: React.FC = () => {
                     </span>
                   </div>
                 </div>
+                <IconNext />
               </div>
             ))}
           </div>

@@ -14,7 +14,7 @@ const SmartphoneWindow: React.FC<SmartphoneWindowProps> = ({
   currentUsername,
 }) => {
   const [showGameStats, setShowGameStats] = useState(false)
-  const [showBoosters, setShowBoosters] = useState(true)
+  const [showBoosters, setShowBoosters] = useState(false)
   const balance = 1000000
 
   const toggleGameStats = () => {

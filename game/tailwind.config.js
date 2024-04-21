@@ -10,6 +10,10 @@ export default {
     extend: {
       colors: {
         shuttleGray: "#5F6165",
+        activeNavElement: "#FDD86D",
+      },
+      backgroundImage: {
+        "hero-pattern": "url('src/assets/images/catappback1.png')",
       },
     },
   },
