@@ -15,7 +15,7 @@ const InterfacePanel: React.FC<Props> = ({
   setActiveInterface,
 }) => {
   return (
-    <div className="text-white flex justify-between gap-2">
+    <div className="text-white flex justify-between gap-2 z-50">
       {navigationInterface.map((item) => (
         <button
           key={item.label}

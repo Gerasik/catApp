@@ -11,6 +11,7 @@ export default defineConfig({
       assets: "/src/assets",
       types: "/src/types",
       constants: "/src/constants",
+      helpers: "/src/helpers",
     },
   },
 })

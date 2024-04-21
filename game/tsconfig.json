@@ -25,7 +25,8 @@
       "components/*": ["components/*"],
       "assets/*": ["assets/*"],
       "types/*": ["types/*"],
-      "constants/*": ["constants/*"]
+      "constants/*": ["constants/*"],
+      "helpers/*": ["helpers/*"]
     },
     "types": ["vite-plugin-svgr/client"]
   },

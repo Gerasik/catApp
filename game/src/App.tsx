@@ -4,22 +4,23 @@ import { navigationInterface } from "./constants"
 import { NavigationInterface } from "types/navigation"
 import { useState } from "react"
 import Boosters from "components/Boosters"
+import CatContainer from "components/CatContainer"
+import GameStats from "components/GameStats"
 
 function App() {
   const [activeInterface, setActiveInterface] = useState(
     NavigationInterface.TAP
   )
   return (
-    <div className="bg-hero-pattern w-screen h-screen bg-cover bg-center px-6 py-14 flex flex-col max-w-md mx-auto gap-2 s">
+    <div className="bg-hero-pattern w-screen h-screen bg-cover bg-center px-6 py-14 flex flex-col max-w-md mx-auto gap-2 overflow-hidden">
       {activeInterface === NavigationInterface.BOOST && <Boosters />}
-      {activeInterface !== NavigationInterface.BOOST && <p>Contetn</p>}
+      {activeInterface === NavigationInterface.TAP && <CatContainer />}
+      {activeInterface === NavigationInterface.STATS && <GameStats />}
       <InterfacePanel
         navigationInterface={navigationInterface}
         activeInterface={activeInterface}
         setActiveInterface={setActiveInterface}
       />
-      {/* <img src={IMGCat} /> */}
-      {/* <SmartphoneWindow currentUsername={currentUsername} /> */}
     </div>
   )
 }

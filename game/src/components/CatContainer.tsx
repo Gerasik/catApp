@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react"
-import styles from "./CatContainer.module.css"
 import IMGCat1 from "assets/images/cat1.svg"
 import IMGCat2 from "assets/images/cat2.svg"
+import BalanceDisplay from "./BalanceDisplay"
 
 const CatContainer: React.FC = () => {
   const [clawsOut, setClawsOut] = useState(false)
@@ -10,19 +10,9 @@ const CatContainer: React.FC = () => {
   >([])
   const containerRef = useRef<HTMLDivElement>(null)
 
-  const handleClick = (e: React.MouseEvent) => {
-    setClawsOut((prev) => !prev)
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-      setScorePositions((prev) => [...prev, { x, y }])
-    }
-  }
-
   const handleTouchStart = (e: React.TouchEvent) => {
     if (e.touches.length > 0 && containerRef.current) {
-      setClawsOut((prev) => !prev)
+      setClawsOut(() => true)
       const rect = containerRef.current.getBoundingClientRect()
       Array.from(e.touches).forEach((touch) => {
         const x = touch.clientX - rect.left
@@ -32,22 +22,27 @@ const CatContainer: React.FC = () => {
     }
   }
 
+  const handleTouchEnd = () => {
+    setClawsOut(() => false)
+  }
+
   return (
     <div
       ref={containerRef}
-      className={styles.catContainer}
-      onClick={handleClick}
+      className="flex-1 relative"
       onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
+      <BalanceDisplay balance={13013413413} />
       <img
-        src={clawsOut ? IMGCat1 : IMGCat2}
+        src={!clawsOut ? IMGCat1 : IMGCat2}
         alt="Cat"
-        className={styles.catImage}
+        className="h-screen absolute scale-150"
       />
       {scorePositions.map((position, index) => (
         <div
           key={index}
-          className={styles.scoreAnimation}
+          className="animate-scoreAnimation absolute text-2xl text-white"
           style={{ left: `${position.x}px`, top: `${position.y}px` }}
         >
           +10

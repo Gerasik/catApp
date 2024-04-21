@@ -8,6 +8,7 @@ import IMGRechargingSpeed from "assets/images/Boosters/rhrngSpeed.png"
 import IMGTapBot from "assets/images/Boosters/tapBot.png"
 import IMGBalance from "assets/images/balanceAlt.png"
 import IconNext from "assets/images/nextArrow.svg?react"
+import BalanceDisplay from "./BalanceDisplay"
 
 const arrDaily = [
   {
@@ -55,10 +56,7 @@ const Boosters: React.FC = () => {
   return (
     <div className="text-white w-full flex flex-col overflow-hidden flex-1">
       <div className="text-xl text-center">Your Share Balance</div>
-      <div className="flex justify-center items-center pb-8 border-b border-white/20 ">
-        <img src={IMGBalance} className="h-10 mr-0.5" />
-        2500
-      </div>
+      <BalanceDisplay balance={2500} />
       <div className="overflow-y-scroll scroll-auto">
         <div className="font-alt">
           <div className="mt-8 text-base mb-4 text-left">
