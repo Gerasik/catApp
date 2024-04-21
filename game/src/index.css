@@ -5,15 +5,22 @@
 @layer base {
   @font-face {
     font-family: "Potato Sans";
-    src: url("Potato_sans-Black.otf") format("opentype");
+    src: url("assets/fonts/Potato_sans-Black.otf") format("opentype");
     font-weight: 900;
     font-style: normal;
   }
 
   @font-face {
     font-family: "Potato Sans";
-    src: url("Potato_sans-Bold.otf") format("opentype");
+    src: url("assets/fonts/Potato_sans-Bold.otf") format("opentype");
     font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Montserrat";
+    src: url("assets/fonts/Montserrat-SemiBold.ttf") format("truetype");
+    font-weight: 600;
     font-style: normal;
   }
 }
@@ -35,4 +42,29 @@
 body {
   margin: 0;
   font-family: "Potato Sans", sans-serif;
+}
+
+.custom-scrollbar {
+  margin-right: -11px;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s;
+
+  &:hover {
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+
+  &:not(:hover)::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    transition: background 0.3s;
+    background: rgba(0, 0, 0, 0.5);
+  }
 }

@@ -5,8 +5,13 @@ export default {
     fontFamily: {
       display: ["Potato Sans"],
       body: ["Potato Sans"],
+      alt: ["Montserrat"],
     },
-    extend: {},
+    extend: {
+      colors: {
+        shuttleGray: "#5F6165",
+      },
+    },
   },
   plugins: [],
 }
