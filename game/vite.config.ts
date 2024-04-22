@@ -13,8 +13,8 @@ export default defineConfig({
       types: "/src/types",
       constants: "/src/constants",
       helpers: "/src/helpers",
-      providers: "/src/Providers",
-      context: "src/Contexts",
+      feature: "/src/feature",
+      hooks: "/src/hooks",
     },
   },
   build: {

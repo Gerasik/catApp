@@ -6,15 +6,15 @@ import { useState } from "react"
 import Boosters from "components/Boosters"
 import CatContainer from "components/CatContainer"
 import GameStats from "components/GameStats"
-import BoostersProvider from "./Providers/BoostersProvider"
-
+import { store } from "./store"
+import { Provider } from "react-redux"
 
 function App() {
   const [activeInterface, setActiveInterface] = useState(
     NavigationInterface.TAP
   )
   return (
-    <BoostersProvider>
+    <Provider store={store}>
       <div className="bg-[url('../src/assets/images/catappback1.png')] w-screen h-screen bg-cover bg-center px-6 py-14 flex flex-col max-w-md mx-auto gap-2 overflow-hidden">
         {activeInterface === NavigationInterface.BOOST && <Boosters />}
         {activeInterface === NavigationInterface.TAP && <CatContainer />}
@@ -25,7 +25,7 @@ function App() {
           setActiveInterface={setActiveInterface}
         />
       </div>
-    </BoostersProvider>
+    </Provider>
   )
 }
 

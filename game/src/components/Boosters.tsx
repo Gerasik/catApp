@@ -1,11 +1,18 @@
-import React, { useContext, useState } from "react"
+import React, { useState } from "react"
 import IMGBalance from "assets/images/balanceAlt.png"
 import IconNext from "assets/images/nextArrow.svg?react"
 import BalanceDisplay from "./BalanceDisplay"
-import BoostersContext, { Booster } from "../Contexts/BoostersContext"
+import { useAppDispatch, useAppSelector } from "hooks/store"
+import { RootState } from "store"
+import { Booster } from "types/booster"
+import { activateBooster, updateBooster } from "feature/booster/boosterSlice"
 
 const Boosters: React.FC = () => {
-  const { dailyBoosters, boosters, updateBooster, activateBooster } = useContext(BoostersContext)
+  const dispatch = useAppDispatch()
+  const { dailyBoosters, boosters } = useAppSelector((state: RootState) => ({
+    boosters: state.boosters.boosters,
+    dailyBoosters: state.boosters.dailyBoosters,
+  }))
   const [clickedBooster, setClickedBooster] = useState<string | null>(null)
 
   const getBoosterMaxLevelText = (booster: Booster) => {
@@ -28,7 +35,7 @@ const Boosters: React.FC = () => {
 
   const handleBoosterClick = (booster: Booster) => {
     if (!isBoosterMaxLevel(booster)) {
-      updateBooster(booster.title)
+      dispatch(updateBooster(booster.title))
       setClickedBooster(booster.title)
       setTimeout(() => setClickedBooster(null), 500)
     }
@@ -42,13 +49,15 @@ const Boosters: React.FC = () => {
       </div>
       <div className="overflow-y-scroll scroll-auto">
         <div className="font-alt">
-          <div className="mt-8 text-base mb-4 text-left">Your daily boosters:</div>
+          <div className="mt-8 text-base mb-4 text-left">
+            Your daily boosters:
+          </div>
           <div className="flex w-full gap-3 justify-stretch">
             {dailyBoosters.map((booster) => (
               <div
                 className="text-xs flex gap-2 rounded-[10px] border-white/50 border px-3.5 py-2 flex-1 items-center bg-white/10 cursor-pointer transition-all duration-500 ease-in-out hover:bg-white/20"
                 key={booster.title}
-                onClick={() => activateBooster(booster.title)}
+                onClick={() => dispatch(activateBooster(booster.title))}
               >
                 <img
                   src={booster.img}
@@ -71,8 +80,11 @@ const Boosters: React.FC = () => {
             {boosters.map((booster) => (
               <div
                 key={booster.title}
-                className={`text-xs flex rounded-[10px] border-white/50 border px-3.5 py-2 flex-1 items-center bg-white/10 gap-2 transition-all duration-500 ease-in-out ${isBoosterMaxLevel(booster) ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:bg-white/20"
-                  } ${clickedBooster === booster.title ? "bg-white/30" : ""}`}
+                className={`text-xs flex rounded-[10px] border-white/50 border px-3.5 py-2 flex-1 items-center bg-white/10 gap-2 transition-all duration-500 ease-in-out ${
+                  isBoosterMaxLevel(booster)
+                    ? "opacity-50 cursor-not-allowed"
+                    : "cursor-pointer hover:bg-white/20"
+                } ${clickedBooster === booster.title ? "bg-white/30" : ""}`}
                 onClick={() => handleBoosterClick(booster)}
               >
                 <img
@@ -83,11 +95,16 @@ const Boosters: React.FC = () => {
                 <div className="flex flex-col items-start flex-1">
                   <p>{booster.title}</p>
                   <div className="flex">
-                    <img src={IMGBalance} className="h-3.5 mr-0.5" /> {booster.cost}
-                    <span className="text-shuttleGray ml-1">| Level: {booster.level}</span>
+                    <img src={IMGBalance} className="h-3.5 mr-0.5" />{" "}
+                    {booster.cost}
+                    <span className="text-shuttleGray ml-1">
+                      | Level: {booster.level}
+                    </span>
                   </div>
                   {isBoosterMaxLevel(booster) && (
-                    <p className="text-red-500 text-xs mt-1">{getBoosterMaxLevelText(booster)}</p>
+                    <p className="text-red-500 text-xs mt-1">
+                      {getBoosterMaxLevelText(booster)}
+                    </p>
                   )}
                 </div>
                 <IconNext />
