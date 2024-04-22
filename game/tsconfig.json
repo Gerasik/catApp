@@ -2,10 +2,14 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable", "es2022"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable",
+      "es2022"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -13,23 +17,45 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-
     "baseUrl": "./src",
     "paths": {
-      "components/*": ["components/*"],
-      "assets/*": ["assets/*"],
-      "types/*": ["types/*"],
-      "constants/*": ["constants/*"],
-      "helpers/*": ["helpers/*"]
+      "components/*": [
+        "components/*"
+      ],
+      "assets/*": [
+        "assets/*"
+      ],
+      "types/*": [
+        "types/*"
+      ],
+      "constants/*": [
+        "constants/*"
+      ],
+      "helpers/*": [
+        "helpers/*"
+      ],
+      "providers/*": [
+        "providers/*"
+      ],
+      "contexts/*": [
+        "contexts/*"
+      ],
     },
-    "types": ["vite-plugin-svgr/client"]
+    "types": [
+      "vite-plugin-svgr/client"
+    ]
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
