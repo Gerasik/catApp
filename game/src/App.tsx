@@ -8,6 +8,7 @@ import CatContainer from "components/CatContainer"
 import GameStats from "components/GameStats"
 import { store } from "./store"
 import { Provider } from "react-redux"
+import Tasks from "components/Tasks"
 
 function App() {
   const [activeInterface, setActiveInterface] = useState(
@@ -19,6 +20,7 @@ function App() {
         {activeInterface === NavigationInterface.BOOST && <Boosters />}
         {activeInterface === NavigationInterface.TAP && <CatContainer />}
         {activeInterface === NavigationInterface.STATS && <GameStats />}
+        {activeInterface === NavigationInterface.TASK && <Tasks />}
         <InterfacePanel
           navigationInterface={navigationInterface}
           activeInterface={activeInterface}

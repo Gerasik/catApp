@@ -11,6 +11,7 @@ export default {
       colors: {
         shuttleGray: "#5F6165",
         activeNavElement: "#FDD86D",
+        bgNotify: "#DF0000",
       },
       keyframes: {
         scoreAnimation: {
